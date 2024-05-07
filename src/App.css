@@ -234,7 +234,6 @@
 .projectPic {
   width: 100%;
   max-height: 600px;
-  max-width: fit-content;
 }
 
 .projectName {
@@ -396,6 +395,8 @@
 
   .projectPic {
     max-height: 450px;
+    max-width: 100%;
+    width: auto;
   }
 
   .contact {
