@@ -175,10 +175,10 @@ function App() {
         <div className="bottomIntro">
           <p className="skill">Skill sets :</p>
           <div className="skillImgs">
-            <img
+            {/* <img
               className="skillImg"
               src="https://www.svgrepo.com/show/374118/tailwind.svg"
-            />
+            /> */}
             <img
               className="skillImg"
               src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/16073828/742161_74060.png"
