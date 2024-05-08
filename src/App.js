@@ -12,6 +12,8 @@ import projectIcon from "./images/project.png";
 import contactIcon from "./images/contact.png";
 import homeIcon from "./images/home.png";
 import me from "./images/me.png";
+import burgerGif from "./images/BurgerPic.gif";
+import chromeGif from "./images/Chrome.gif";
 import burger1 from "./images/Burger1.png";
 import burger2 from "./images/Burger2.png";
 import burger3 from "./images/Burger3.png";
@@ -31,7 +33,6 @@ function App() {
   const projectRef = useRef(null);
   const contactRef = useRef(null);
   const [tabletSize, setTabletSize] = useState(false);
-  console.log(window.innerWidth);
   useEffect(() => {
     const handleResize = () => {
       setTabletSize(window.innerWidth < 850 ? true : false);
@@ -87,16 +88,31 @@ function App() {
   }
 
   function Navbar2() {
-    const [menu, setMenu] = useState(true);
+    const [menu, setMenu] = useState(Array(4).fill(true));
 
     function showMenu() {
-      if (!menu) {
-        setMenu(true);
+      if (menu[0]) {
+        for (let i = 0; i < menu.length; i++) {
+          setTimeout(() => {
+            setMenu((prevMenu) => {
+              const newMenu = [...prevMenu];
+              newMenu[i] = false;
+              return newMenu;
+            });
+          }, i * 110);
+        }
       } else {
-        setMenu(false);
+        for (let i = 0; i < menu.length; i++) {
+          setTimeout(() => {
+            setMenu((prevMenu) => {
+              const newMenu = [...prevMenu];
+              newMenu[i] = true;
+              return newMenu;
+            });
+          }, i * 110);
+        }
       }
     }
-
     return (
       <div className="navbar2">
         <div className="navBottom">
@@ -117,32 +133,40 @@ function App() {
             />
           </div>
         </div>
-        <div className={menu ? "menu" : "menu show"}>
-          <div className="iconContainer">
+        <div className="menuContainer">
+          <div className={menu[0] ? "menu" : "menu show"}>
             <img
-              className="homeIcon"
-              onClick={() => handleRef(homeRef)}
+              onClick={() => {
+                handleRef(homeRef);
+                showMenu();
+              }}
               src={homeIcon}
             />
           </div>
-          <div className="iconContainer">
+          <div className={menu[1] ? "menu" : "menu show"}>
             <img
-              className="infroIcon"
-              onClick={() => handleRef(aboutRef)}
+              onClick={() => {
+                handleRef(aboutRef);
+                showMenu();
+              }}
               src={infroIcon}
             />
           </div>
-          <div className="iconContainer">
+          <div className={menu[2] ? "menu" : "menu show"}>
             <img
-              className="projectIcon"
-              onClick={() => handleRef(projectRef)}
+              onClick={() => {
+                handleRef(projectRef);
+                showMenu();
+              }}
               src={projectIcon}
             />
           </div>
-          <div className="iconContainer">
+          <div className={menu[3] ? "menu" : "menu show"}>
             <img
-              className="contactIcon"
-              onClick={() => handleRef(contactRef)}
+              onClick={() => {
+                handleRef(contactRef);
+                showMenu();
+              }}
               src={contactIcon}
             />
           </div>
@@ -156,10 +180,11 @@ function App() {
       <div className="intro" ref={homeRef}>
         <div className="topIntro">
           <div className="leftIntro">
-            <p className="title">Front-End Web Developer 🖥️</p>
+            <p className="title">Front-end Web Developer 🖥️</p>
             <p className="introContent">
-              {"\u00A0".repeat(4)} Hi👋, I'm Dan Wong. A person who passionate
-              on web development. Like making some fun and attractive websites!
+              {"\u00A0".repeat(4)} Hi👋, I'm Dan Wong. A person who is
+              passionate on web development. I like making some fun and
+              attractive websites!
             </p>
             <a href="https://github.com/Danwwwww/Project" target="blank">
               <img
@@ -207,16 +232,16 @@ function App() {
         <div className="about">
           <p className="title aboutTitle">About Me</p>
           <p className="aboutIntro">
-            {"\u00A0".repeat(4)}I recently graduated from a Front-end bootcamp
-            by Clap@JC X Generation .I learned the various practical coding
-            skills and knowledge practical coding skill. Additionally, I
-            acquired knowledge in Scrum skills and the development workflow.
+            {"\u00A0".repeat(4)}I recently graduated from a Front-end boot-camp
+            by Clap@JC X Generation .I learnt the various practical coding
+            skills. Additionally, I acquired knowledge in Scrum skills and the
+            development workflow.
             <br />
-            {"\u00A0".repeat(4)}Throughout the bootcamp, even though I
+            {"\u00A0".repeat(4)}Throughout the boot-camp, even though I
             encountered numerous challenges, I still enjoyed about that because
             each time I resolved coding issues, I witnessed personal growth. The
             sense of achievement I experienced further fueled my passion.
-            Although the boot-camp ended, my self-learning didn't end.✊
+            Although the boot-camp ended, my self-learning dosen't.✊
           </p>
         </div>
       </>
@@ -224,19 +249,20 @@ function App() {
   }
 
   function Projects() {
-    const [burgerPic, setBurgerPic] = useState(burger1);
-    const [extensionPic, setextensionPic] = useState(ex1);
+    // const [burgerPic, setBurgerPic] = useState(burger1);
+    // const [extensionPic, setextensionPic] = useState(ex1);
 
-    // function handleBurgerPic() {
-    //   let index = 2;
-    //   let timer = setInterval(() => {
-    //     if (index < 5) {
-    //       setBurgerPic(`burger${index}`);
-    //       index++;
-    //     } else {
-    //       clearInterval(timer);
-    //     }
-    //   }, 500);
+    // let burgerImage = require.context("./images/", false, /Burger.*\.png$/);
+    // let burgerImages = burgerImage.keys().map((image) => burgerImage(image));
+    // let chromeImage = require.context("./images/", false, /CE.*\.png$/);
+    // let chromeImages = chromeImage.keys().map((image) => chromeImage(image));
+
+    // function handleBurgerPic(imageArr) {
+    //   for (let i = 0; i < imageArr.length; i++) {
+    //     setInterval(() => {
+    //       setBurgerPic(burgerImages[i]);
+    //     }, 500);
+    //   }
     // }
 
     // function handleBurgerPicOut() {
@@ -252,18 +278,18 @@ function App() {
             <div className="projectLeft">
               <img
                 className="projectPic burger"
-                src={burgerPic}
-                // onMouseEnter={handleBurgerPic}
+                src={burgerGif}
+                // onMouseEnter={() => handleBurgerPic(burgerImages)}
                 // onMouseLeave={handleBurgerPicOut}
               />
             </div>
             <div className="projectRight">
-              <div className="projectName">Online Burger order website</div>
+              <div className="projectName">Online Burger Order Website</div>
               <div className="projectDescibe">
                 <li>This is a online website design for burger store</li>
-                <li>Customes can order custom-made burger</li>
+                <li>Customers can order custom-made burger</li>
                 <li>
-                  We can recevie the opinion by email.js when customers submit
+                  We can recevie the opinion by EmailJS when customers submit
                 </li>
                 <li>
                   Skills : <span className="htmlSkill">HTML</span>{" "}
@@ -291,19 +317,19 @@ function App() {
           </div>
           <div className="projectContainer">
             <div className="projectLeft">
-              <img className="projectPic extension" src={extensionPic} />
+              <img className="projectPic extension" src={chromeGif} />
             </div>
             <div className="projectRight">
               <div className="projectName">
-                Weather forecast Chrome extension
+                Weather Forecast Chrome Extension
               </div>
               <div className="projectDescibe">
                 <li>This Chrome extension desgin for computer user</li>
-                <li>User can check the next 7 days of weather forecasting</li>
-                <li>User can change differet unit and Layout if they want</li>
+                <li>Users can check the next 7 days of weather forecasting</li>
+                <li>Users can change differet unit and Layout if they want</li>
                 <li>
                   Once turn on the Chrome extension, the rain reminder will
-                  shows if tomorrow is rain
+                  shows if tomorrow will rain
                 </li>
                 <li>
                   Skills : <span className="htmlSkill">HTML</span>{" "}
@@ -330,12 +356,12 @@ function App() {
               />
             </div>
             <div className="projectRight">
-              <div className="projectName">KMB arrival time query Web App</div>
+              <div className="projectName">KMB Arrival Time Query Web App</div>
               <div className="projectDescibe">
-                <li>This Web App design for mobile user</li>
+                <li>This Web App design for mobile users</li>
                 <li>
-                  The User can check the arrival time of different station by
-                  enter the route they want.
+                  Users can check the arrival time of different stations by
+                  enter the route
                 </li>
                 <li>
                   Skills : <span className="htmlSkill">HTML</span>{" "}
@@ -369,10 +395,10 @@ function App() {
               />
             </div>
             <div className="projectRight">
-              <div className="projectName">MTR realtime query website</div>
+              <div className="projectName">MTR Arrival Time Query Website</div>
               <div className="projectDescibe">
                 <li>
-                  The user can search the arrival time of different station by
+                  Users can search the arrival time of different stations by
                   pressing the button of route
                 </li>
                 <li>
