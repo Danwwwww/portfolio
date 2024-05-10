@@ -7,6 +7,7 @@ import js from "./images/JS.png";
 import github from "./images/Github.png";
 import { useRef, useState, useEffect } from "react";
 import hamburgerIcon from "./images/hamburgerIcon.png";
+import arrow from "./images/arrow.png";
 import infroIcon from "./images/infro.png";
 import projectIcon from "./images/project.png";
 import contactIcon from "./images/contact.png";
@@ -89,6 +90,7 @@ function App() {
 
   function Navbar2() {
     const [menu, setMenu] = useState(Array(4).fill(true));
+    const [arrow, setArrow] = useState(false);
 
     function showMenu() {
       if (menu[0]) {
@@ -113,6 +115,11 @@ function App() {
         }
       }
     }
+
+    function changeIcon() {
+      arrow ? setArrow(false) : setArrow(true);
+    }
+
     return (
       <div className="navbar2">
         <div className="navBottom">
@@ -126,11 +133,13 @@ function App() {
             </div>
           </div>
           <div className="rightBar">
-            <img
-              className="hamburgerMenu"
-              src={hamburgerIcon}
-              onClick={showMenu}
-            />
+            <div
+              className={arrow ? "hamburgerMenu arrow" : "hamburgerMenu"}
+              onClick={() => {
+                showMenu();
+                changeIcon();
+              }}
+            ></div>
           </div>
         </div>
         <div className="menuContainer">
@@ -176,6 +185,8 @@ function App() {
   }
 
   function Home() {
+    const [scale, setScale] = useState(Array(4).fill(false));
+
     return (
       <div className="intro" ref={homeRef}>
         <div className="topIntro">
@@ -361,7 +372,7 @@ function App() {
                 <li>This Web App design for mobile users</li>
                 <li>
                   Users can check the arrival time of different stations by
-                  enter the route
+                  entering the route
                 </li>
                 <li>
                   Skills : <span className="htmlSkill">HTML</span>{" "}

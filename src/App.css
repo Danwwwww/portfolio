@@ -296,6 +296,8 @@
   padding: 3px 5px;
   margin: 10px;
   border-radius: 10px;
+  border: black 2px solid;
+  box-shadow: 0px 4px 0px 0px rgba(0, 0, 0, 0.3);
 }
 
 /* Contact */
@@ -472,12 +474,35 @@
   .div2 {
     height: 20px;
   }
+
   .hamburgerMenu {
-    height: 50px;
+    width: 40px;
+    height: 40px;
     padding: 5px;
-    padding-right: 20px;
+    margin-right: 20px;
     cursor: pointer;
+    border: 3px solid black;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-image: url(./images/hamburgerIcon.png);
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
   }
+
+  .arrow {
+    background-image: url(./images/arrow.png);
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    animation: up 0.5s ease-in-out;
+  }
+
   .leftBar {
     width: 80%;
   }
@@ -528,6 +553,6 @@
   .aboutIntro,
   .projectName,
   .projectDescibe > li {
-    text-align: justify;
+    /* text-align: justify; */
   }
 }
