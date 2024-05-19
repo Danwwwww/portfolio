@@ -443,6 +443,10 @@
     height: auto;
   }
 
+  .github {
+    width: 30%;
+  }
+
   .contactLink > a {
     display: flex;
     justify-content: center;
