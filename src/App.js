@@ -15,18 +15,8 @@ import homeIcon from "./images/home.png";
 import me from "./images/me.png";
 import burgerGif from "./images/BurgerPic.gif";
 import chromeGif from "./images/Chrome.gif";
-import burger1 from "./images/Burger1.png";
-import burger2 from "./images/Burger2.png";
-import burger3 from "./images/Burger3.png";
-import burger4 from "./images/Burger4.png";
-import burger5 from "./images/Burger5.png";
-import ex1 from "./images/CE1.png";
-import ex2 from "./images/CE2.png";
-import ex3 from "./images/CE3.png";
-import ex4 from "./images/CE4.png";
-import ex5 from "./images/CE5.png";
-import ex6 from "./images/CE6.png";
-import ex7 from "./images/CE7.png";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function App() {
   const homeRef = useRef(null);
@@ -34,6 +24,13 @@ function App() {
   const projectRef = useRef(null);
   const contactRef = useRef(null);
   const [tabletSize, setTabletSize] = useState(false);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+    });
+  }, []);
+
   useEffect(() => {
     const handleResize = () => {
       setTabletSize(window.innerWidth < 850 ? true : false);
@@ -240,13 +237,21 @@ function App() {
     return (
       <>
         <div className="empty" ref={aboutRef}></div>
-        <div className="about">
+        <div className="about" data-aos="zoom-in">
           <p className="title aboutTitle">About Me</p>
           <p className="aboutIntro">
             {"\u00A0".repeat(4)}I recently graduated from a Front-end boot-camp
-            by Clap@JC X Generation .I learnt the various practical coding
-            skills. Additionally, I acquired knowledge in Scrum skills and the
-            development workflow.
+            by{" "}
+            <span>
+              <a
+                target="blank"
+                href="https://en.hongkong.generation.org/front-end-web-developer/"
+              >
+                Clap@JC X Generation
+              </a>
+            </span>{" "}
+            .I learnt the various practical coding skills. Additionally, I
+            acquired knowledge in Scrum skills and the development workflow.
             <br />
             {"\u00A0".repeat(4)}Throughout the boot-camp, even though I
             encountered numerous challenges, I still enjoyed about that because
@@ -283,7 +288,7 @@ function App() {
     return (
       <>
         <div className="empty" ref={projectRef}></div>
-        <div className="projects">
+        <div className="projects" data-aos="zoom-in">
           <p className="title projectTitle">Projects</p>
           <div className="projectContainer">
             <div className="projectLeft">
