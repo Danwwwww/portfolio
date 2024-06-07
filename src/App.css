@@ -467,6 +467,7 @@
     position: fixed;
     bottom: 0px;
     height: 70px;
+    z-index: 1;
   }
 
   .navBottom {
