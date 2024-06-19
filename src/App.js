@@ -227,6 +227,10 @@ function App() {
             <img className="skillImg" src={js} />
             <img className="skillImg" src={html} />
             <img className="skillImg" src={css} />
+            <img
+              className="skillImg"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1024px-Typescript_logo_2020.svg.png"
+            />
           </div>
         </div>
       </div>
@@ -302,10 +306,10 @@ function App() {
             <div className="projectRight">
               <div className="projectName">Online Burger Order Website</div>
               <div className="projectDescibe">
-                <li>This is a online website design for burger store</li>
+                <li>This is an online website design for burger store</li>
                 <li>Customers can order custom-made burger</li>
                 <li>
-                  We can recevie the opinion by EmailJS when customers submit
+                  We can receive the opinion by EmailJS when customers submit
                 </li>
                 <li>
                   Skills : <span className="htmlSkill">HTML</span>{" "}
