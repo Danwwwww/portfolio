@@ -135,7 +135,13 @@ function App() {
                 showMenu();
                 changeIcon();
               }}
-            ></div>
+            >
+              <div>
+                <div className="line1"></div>
+                <div className="line2"></div>
+                <div className="line3"></div>
+              </div>
+            </div>
           </div>
         </div>
         <div className="menuContainer">
